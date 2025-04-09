@@ -1,10 +1,21 @@
-<div>
-  <h1>welcome to <i class="fas fa-book" aria-hidden="true"></i><strong>Okashi_Lab</strong>  !!</h1>
-  <p>In <strong>Okashi_Lab</strong>, </p>
-  <p>you can share and exchange  your opinions , inpressions , and emotions</p>
-  <p> about various books!</p>
-  <div>
-    <div><%= link_to "Log in", new_user_session_path %></div>
-    <div><%= link_to "Sign up", new_user_registration_path %></div>
+<div class="container mt-5 text-center">
+  <h1 class="mb-4">
+    Welcome to <i class="fas fa-cookie-bite text-warning"></i> <strong>Okashi_Lab</strong>!!
+  </h1>
+
+  <p class="lead">
+    <strong>Okashi_Lab</strong>は、<br>
+    あなたのお菓子作りのレシピや感想を<br>
+    気軽にシェアできるコミュニティサイトです🍰
+  </p>
+
+  <p class="mb-4">
+    美味しいレシピを投稿したり、<br>
+    他の人のレシピにコメントして一緒に楽しみましょう！
+  </p>
+
+  <div class="d-flex justify-content-center gap-3">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary btn-lg" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
   </div>
 </div>

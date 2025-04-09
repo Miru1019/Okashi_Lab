@@ -1,35 +1,42 @@
 <!-- app/views/recipes/show.html.erb -->
-<h2>レシピ 詳細</h2>
+<div class="card p-4 shadow-sm">
+  <h2 class="mb-4">レシピ詳細</h2>
 
-<% if @recipe.image.attached? %>
-  <p>
-    <strong>レシピ画像:</strong><br>
-    <%= image_tag @recipe.get_recipe_image(150, 150) %>
-  </p>
-<% else %>
-  <p>画像はまだアップロードされていません。</p>
-<% end %>
+  <% if @recipe.image.attached? %>
+    <div class="mb-3 text-center">
+      <strong>レシピ画像:</strong><br>
+      <%= image_tag @recipe.get_recipe_image(300, 300), class: "img-fluid rounded" %>
+    </div>
+  <% else %>
+    <p class="text-muted">画像はまだアップロードされていません。</p>
+  <% end %>
 
-<p>
-  <strong>Title:</strong><br>
-  <%= @recipe.title %>
-</p>
+  <div class="mb-3">
+    <strong>タイトル:</strong>
+    <p><%= @recipe.title %></p>
+  </div>
 
-<p>
-  <strong>Opinion:</strong><br>
-  <%= @recipe.body %>
-</p>
+  <div class="mb-3">
+    <strong>説明:</strong>
+    <p><%= @recipe.body %></p>
+  </div>
 
-<p>
-  <strong>材料:</strong><br>
-  <%= @recipe.ingredients %>
-</p>
+  <div class="mb-3">
+    <strong>材料:</strong>
+    <p><%= simple_format(@recipe.ingredients) %></p>
+  </div>
 
-<p>
-  <strong>作り方:</strong><br>
-  <%= @recipe.instructions %>
-</p>
+  <div class="mb-3">
+    <strong>作り方:</strong>
+    <p><%= simple_format(@recipe.instructions) %></p>
+  </div>
 
-<%= link_to '戻る', recipes_path %>
-<%= link_to 'レシピ編集', edit_recipe_path(@recipe) %>
-<%= link_to 'レシピ削除', recipe_path(@recipe), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  <div class="d-flex justify-content-between mt-4">
+    <%= link_to '戻る', recipes_path, class: 'btn btn-secondary' %>
+    <div>
+      <%= link_to 'レシピ編集', edit_recipe_path(@recipe), class: 'btn btn-primary me-2' %>
+      <%= link_to 'レシピ削除', recipe_path(@recipe), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>
+
