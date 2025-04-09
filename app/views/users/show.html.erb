@@ -6,24 +6,31 @@
           <h2><%= @user.name %> さんのプロフィール</h2>
         </div>
         <div class="card-body">
+          <!-- プロフィール画像 -->
+          <div class="mb-3 text-center">
+            <% if @user.profile_image.attached? %>
+              <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
+            <% else %>
+              <%= image_tag 'no_image.png', class: 'img-fluid rounded-circle' %> <!-- no_image.png はデフォルト画像 -->
+            <% end %>
+          </div>
 
-        <div class="card-body">
           <!-- 名前 -->
           <div class="mb-3">
-          <strong>名前:</strong> <%= @user.name %>
-        </div>
+            <strong>名前:</strong> <%= @user.name %>
+          </div>
 
-        <!-- 紹介文 -->
-        <div class="mb-3">
-          <strong>自己紹介:</strong> <%= @user.bio %>
-        </div>
+          <!-- 紹介文 -->
+          <div class="mb-3">
+            <strong>自己紹介:</strong> <%= @user.bio %>
+          </div>
 
           <div class="mb-3">
             <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-secondary' %>
           </div>
 
           <h3>投稿レシピ一覧</h3>
-          
+
           <div class="mb-3">
             <%= link_to 'レシピを投稿する', new_recipe_path, class: 'btn btn-primary' %>
           </div>
@@ -45,4 +52,5 @@
     </div>
   </div>
 </div>
+
 
