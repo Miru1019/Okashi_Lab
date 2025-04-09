@@ -1,0 +1,35 @@
+<!-- app/views/recipes/show.html.erb -->
+<h2>レシピ 詳細</h2>
+
+<% if @recipe.image.attached? %>
+  <p>
+    <strong>レシピ画像:</strong><br>
+    <%= image_tag @recipe.get_recipe_image(150, 150) %>
+  </p>
+<% else %>
+  <p>画像はまだアップロードされていません。</p>
+<% end %>
+
+<p>
+  <strong>Title:</strong><br>
+  <%= @recipe.title %>
+</p>
+
+<p>
+  <strong>Opinion:</strong><br>
+  <%= @recipe.body %>
+</p>
+
+<p>
+  <strong>材料:</strong><br>
+  <%= @recipe.ingredients %>
+</p>
+
+<p>
+  <strong>作り方:</strong><br>
+  <%= @recipe.instructions %>
+</p>
+
+<%= link_to '戻る', recipes_path %>
+<%= link_to 'レシピ編集', edit_recipe_path(@recipe) %>
+<%= link_to 'レシピ削除', recipe_path(@recipe), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>

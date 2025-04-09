@@ -1,0 +1,29 @@
+<div>
+  <h2>Recipes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td>
+            <%= link_to user_path(recipe.user_id) do %>
+              <%= image_tag recipe.user.get_profile_image(80,80) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to recipe_path(recipe.id) do %>
+              <%= recipe.title %>
+            <% end %>
+          </td>
+          <td><%= recipe.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

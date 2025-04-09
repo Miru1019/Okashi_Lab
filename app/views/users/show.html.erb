@@ -1,0 +1,26 @@
+<h2><%= @user.name %> さんのプロフィール</h2>
+
+<p><strong>メールアドレス:</strong> <%= @user.email %></p>
+
+<%= link_to '編集する', edit_user_path(@user) %>
+
+<h3>投稿レシピ一覧</h3>
+
+<p>
+  <%= link_to 'レシピを投稿する', new_recipe_path, class: 'btn btn-primary' %>
+</p>
+
+<% if @recipes.any? %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <%= link_to recipe.title, recipe_path(recipe) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>投稿されたレシピはまだありません。</p>
+<% end %>
+
+
+

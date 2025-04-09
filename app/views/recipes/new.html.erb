@@ -1,0 +1,33 @@
+<!-- app/views/recipes/new.html.erb -->
+<h2>New Recipe</h2>
+
+<%= form_with model: @recipe do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.label :ingredients, '材料' %>
+    <%= f.text_area :ingredients %>
+  </div>
+
+  <div>
+    <%= f.label :instructions, '作り方' %>
+    <%= f.text_area :instructions %>
+  </div>
+
+  <div>
+    <%= f.label :image, 'レシピ画像' %>
+    <%= f.file_field :image %>  <!-- 画像フィールドを追加 -->
+  </div>
+
+  <div>
+    <%= f.submit 'Create Recipe' %>
+  </div>
+<% end %>

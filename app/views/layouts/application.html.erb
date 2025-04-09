@@ -8,9 +8,67 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/854d1847dd.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+  <nav>
+    <div>
+      <%= link_to 'Okashi_Lab', root_path %>
+    </div>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <i class="fas fa-home" aria-hidden="true"></i> Home</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path do %>
+              <i class="fas fa-users" aria-hidden="true"></i> Users</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to recipes_path do %>
+              <i class="fas fa-book-open" aria-hidden="true"></i> Recipes</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</i>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-home" aria-hidden="true"> Home</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path do %>
+              <i class="fas fa-link" aria-hidden="true"> About</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus" aria-hidden="true"> Sign up</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt" aria-hidden="true"> Log in</i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+  </nav>
+</header>
+<%= yield %>
+<footer>
+  <div>
+    <p>CopyRight Infratop.inc</p>
+  </div>
+</footer>
   </body>
 </html>

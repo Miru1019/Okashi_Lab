@@ -1,0 +1,28 @@
+<h2>ユーザー編集</h2>
+
+<%= form_with model: @user, local: true do |f| %>
+  <div>
+    <%= f.label :name, '名前' %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, 'メールアドレス' %><br>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :profile_image, 'プロフィール画像' %><br>
+    <%= f.file_field :profile_image %>
+    <% if @user.profile_image.attached? %>
+      <div>
+        <strong>現在のプロフィール画像:</strong>
+        <%= image_tag @user.get_profile_image(150, 150) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit '更新する' %>
+  </div>
+<% end %>
