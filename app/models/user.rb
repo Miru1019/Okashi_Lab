@@ -10,9 +10,9 @@ class User < ApplicationRecord
 
         def get_profile_image(width, height)
           if profile_image.attached?
-            profile_image.variant(resize_to_limit: [width, height]).processed
+            profile_image.variant(resize_to_fill: [width, height]).processed
           else
-            nil # 画像がないときは nil を返すようにしておく
+            'no_image.png'
           end
         end
       end
