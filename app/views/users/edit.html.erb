@@ -24,7 +24,7 @@
       <% if @user.profile_image.attached? %>
         <div class="mt-3">
           <strong>現在のプロフィール画像:</strong><br>
-          <%= image_tag @user.get_profile_image(150, 150), class: 'img-thumbnail mt-2' %>
+          <%= image_tag(@user.get_profile_image(150, 150), class: "img-fluid rounded-circle") %>
         </div>
       <% end %>
     </div>

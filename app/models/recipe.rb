@@ -4,10 +4,10 @@ class Recipe < ApplicationRecord
 
   # 画像を取得するメソッドを追加
   def get_recipe_image(width, height)
-    unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+    if image.attached?
+      image.variant(resize_to_limit: [width, height]).processed
+    else
+      nil
     end
-    image.variant(resize_to_limit: [width, height]).processed
   end
 end

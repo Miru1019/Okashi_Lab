@@ -2,7 +2,7 @@
 <div class="card p-4 shadow-sm">
   <h2 class="mb-4">レシピ詳細</h2>
 
-  <% if @recipe.image.attached? %>
+  <% if @recipe.get_recipe_image(300, 300) %>
     <div class="mb-3 text-center">
       <strong>レシピ画像:</strong><br>
       <%= image_tag @recipe.get_recipe_image(300, 300), class: "img-fluid rounded" %>
@@ -10,6 +10,7 @@
   <% else %>
     <p class="text-muted">画像はまだアップロードされていません。</p>
   <% end %>
+
 
   <div class="mb-3">
     <strong>タイトル:</strong>

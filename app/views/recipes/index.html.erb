@@ -13,11 +13,7 @@
         <tr>
           <td>
             <%= link_to user_path(recipe.user_id) do %>
-              <% if recipe.image.attached? %>
-                <%= image_tag recipe.image, class: "rounded-circle border", alt: "レシピ画像", width: 80, height: 80 %>
-              <% else %>
-                <%= image_tag "no_image.jpg", class: "rounded-circle border", alt: "No image", width: 80, height: 80 %> <!-- no_image.jpgは画像がない場合に表示される画像 -->
-              <% end %>
+              <%= image_tag recipe.get_recipe_image(80, 80), class: "rounded-circle border", alt: "レシピ画像", width: 80, height: 80 %>
             <% end %>
           </td>
           <td>
