@@ -15,4 +15,4 @@ class User < ApplicationRecord
             nil # 画像がないときは nil を返すようにしておく
           end
         end
-        
+      end
