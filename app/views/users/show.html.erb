@@ -7,13 +7,17 @@
         </div>
         <div class="card-body">
         <!-- プロフィール画像 -->
-          <div class="mb-3 text-center">
-            <% if @user.get_profile_image(150, 150).present? %>
-              <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
-            <% else %>
-              <p>画像がありません</p> 
-            <% end %>
-          </div>
+        <div class="mb-3 text-center">
+        <% begin %>
+          <% if @user.get_profile_image(150, 150).present? %>
+            <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
+          <% else %>
+            <p>画像がありません</p> <!-- 画像がない場合のメッセージ -->
+          <% end %>
+        <% rescue => e %>
+          <p>画像が読み込めませんでした: <%= e.message %></p>
+        <% end %>
+      </div>
         
 
         
