@@ -4,10 +4,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # サインアップ時に :name を許可
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
     
-    # アカウント編集時にも :name を許可（必要なら）
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
   end
 
