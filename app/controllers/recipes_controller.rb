@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :edit, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def new
     @recipe = Recipe.new
   end
@@ -48,6 +49,13 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def ensure_correct_user
+    @recipe = Recipe.find(params[:id])
+    if @recipe.user != current_user
+      redirect_to recipes_path, alert: "他人のレシピは編集できません。"
+    end
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title, :body, :image, :ingredients, :instructions)
