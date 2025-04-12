@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id]) 
     @recipe.destroy
-    redirect_to mypage_path, notice: 'レシピを削除しました。
+    redirect_to mypage_path, notice: 'レシピを削除しました'
   end
 
   private
