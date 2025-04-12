@@ -34,10 +34,11 @@
 
   <div class="d-flex justify-content-between mt-4">
     <%= link_to '戻る', recipes_path, class: 'btn btn-secondary' %>
+  <% if user_signed_in? && current_user == @recipe.user %>
     <div>
       <%= link_to 'レシピ編集', edit_recipe_path(@recipe), class: 'btn btn-primary me-2' %>
       <%= link_to 'レシピ削除', recipe_path(@recipe), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
     </div>
-  </div>
+  <% end %>
 </div>
 
