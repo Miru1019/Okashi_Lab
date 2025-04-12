@@ -1,6 +1,17 @@
 <h2 class="mb-4">ユーザー編集</h2>
 
 <div class="card p-4 shadow-sm">
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h5>エラーがあります：</h5>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with model: @user, local: true, html: { multipart: true } do |f| %>
     <div class="mb-3">
       <%= f.label :name, '名前', class: 'form-label' %>
@@ -31,7 +42,7 @@
 
     <div class="text-center">
       <%= f.submit '更新する', class: 'btn btn-primary px-4' %>
-      <%= link_to '退会する', user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger' %>
+        <%= link_to '退会する', user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>

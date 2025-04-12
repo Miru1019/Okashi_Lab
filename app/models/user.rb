@@ -8,6 +8,9 @@ class User < ApplicationRecord
         has_one_attached :profile_image
         has_many :recipes, dependent: :destroy
 
+        validates :name, presence: true
+        validates :email, presence: true
+
         def get_profile_image(width, height)
           if profile_image.attached?
             profile_image.variant(resize_to_fill: [width, height]).processed
