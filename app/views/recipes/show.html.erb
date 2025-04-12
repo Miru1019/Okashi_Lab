@@ -2,14 +2,15 @@
 <div class="card p-4 shadow-sm">
   <h2 class="mb-4">レシピ詳細</h2>
 
-  <% if @recipe.get_recipe_image(300, 300) %>
-    <div class="mb-3 text-center">
-      <strong>レシピ画像:</strong><br>
-      <%= image_tag @recipe.get_recipe_image(300, 300), class: "img-fluid rounded" %>
-    </div>
-  <% else %>
-    <p class="text-muted">画像はまだアップロードされていません。</p>
+  <div class="mb-3 text-center">
+  <strong>レシピ画像:</strong><br>
+  <% begin %>
+    <%= image_tag @recipe.get_recipe_image(300, 300), class: "img-fluid rounded" %>
+  <% rescue => e %>
+    <%= image_tag 'no_image.png', size: "300x300", class: "img-fluid rounded" %>
+    <p class="text-muted">※画像が設定されていません。</p>
   <% end %>
+</div>
 
 
   <div class="mb-3">
