@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'mypage', to: 'users#mypage', as: 'mypage'
 
   resources :recipes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-  resources :users, only: [:index, :show, :update, :edit]
+  resources :users, only: [:index, :show, :update, :edit, :mypage]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
