@@ -11,7 +11,7 @@
             <% if @user.get_profile_image(150, 150).present? %>
               <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
             <% else %>
-              <%= image_tag 'no_image.jpg', class: 'img-fluid rounded-circle' %> <!-- デフォルト画像 -->
+              <p>画像がありません</p> 
             <% end %>
           </div>
         
