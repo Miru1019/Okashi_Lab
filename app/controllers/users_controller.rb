@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     if @user == current_user
       @user.destroy
       reset_session
