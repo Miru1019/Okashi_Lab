@@ -26,6 +26,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if @user == current_user
+      @user.destroy
+      reset_session
+      redirect_to new_user_registration_path, notice: 'アカウントを削除しました。'
+    else
+      redirect_to root_path, alert: '不正な操作です。'
+    end
+  end
+
   private
 
   def set_user
