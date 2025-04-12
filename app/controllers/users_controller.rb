@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def mypage
+    @user = current_user
+    @recipes = @user.recipes
+  end
+  
   def index
     @users = User.all
   end

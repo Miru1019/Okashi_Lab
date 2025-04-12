@@ -2,35 +2,32 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm rounded">
-        <div class="card-header bg-primary text-white text-center">
-          <h2><%= @user.name %> さんマイページ</h2>
+        <div class="card-header bg-success text-white text-center">
+          <h2><%= @user.name %> さんのマイページ</h2>
         </div>
         <div class="card-body">
-        <!-- プロフィール画像 -->
-        <div class="mb-3 text-center">
-        <% begin %>
-          <% if @user.get_profile_image(150, 150).present? %>
-            <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
-          <% else %>
-            <p>画像がありません</p> <!-- 画像がない場合のメッセージ -->
-          <% end %>
-        <% rescue => e %>
-          <p>画像が読み込めませんでした: <%= e.message %></p>
-        <% end %>
-      </div>
-        
-
-        
-          <div class="mb-3">
-            <strong>名前:</strong> <%= @user.name %>
+          <!-- プロフィール画像 -->
+          <div class="mb-3 text-center">
+            <% if @user.get_profile_image(150, 150).present? %>
+              <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
+            <% else %>
+              <p>画像がありません</p>
+            <% end %>
           </div>
 
-        
           <div class="mb-3">
             <strong>自己紹介:</strong> <%= @user.bio %>
           </div>
 
+          <div class="mb-3">
+            <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-secondary' %>
+          </div>
+
           <h3>投稿レシピ一覧</h3>
+
+          <div class="mb-3">
+            <%= link_to 'レシピを投稿する', new_recipe_path, class: 'btn btn-primary' %>
+          </div>
 
           <% if @recipes.any? %>
             <ul class="list-group">
@@ -49,5 +46,3 @@
     </div>
   </div>
 </div>
-
-
