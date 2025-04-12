@@ -9,10 +9,10 @@
         <!-- プロフィール画像 -->
         <div class="mb-3 text-center">
         <% begin %>
-          <% if @user.get_profile_image(100, 100).present? %>
-            <%= image_tag @user.get_profile_image(100, 100), class: 'img-fluid rounded-circle' %>
+          <% if @user.get_profile_image(150, 150).present? %>
+            <%= image_tag @user.get_profile_image(150, 150), class: 'img-fluid rounded-circle' %>
           <% else %>
-            <p>画像がありません</p> <!-- 画像がない場合のメッセージ -->
+            <%= image_tag @user.get_profile_image(100, 100), size: "100x100", class: 'img-fluid rounded-circle' %>
           <% end %>
         <% rescue => e %>
           <p>画像が読み込めませんでした: <%= e.message %></p>
