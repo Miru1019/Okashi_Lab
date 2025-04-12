@@ -3,6 +3,16 @@
   <h2 class="mb-4">新規レシピ投稿</h2>
 
   <%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
+    <% if @recipe.errors.any? %>
+      <div class="alert alert-danger">
+        <h5>以下のエラーがあります：</h5>
+          <ul>
+            <% @recipe.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
     <div class="mb-3">
       <%= f.label :title, 'タイトル', class: 'form-label' %>
       <%= f.text_field :title, class: 'form-control' %>

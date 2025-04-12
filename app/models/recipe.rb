@@ -1,5 +1,10 @@
 class Recipe < ApplicationRecord
   belongs_to :user
+
+  validates :title, presence: true
+  validates :ingredients, presence: true
+  validates :instructions, presence: true
+  
   has_one_attached :image  # 画像を追加
 
   # 画像を取得するメソッドを追加

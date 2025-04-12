@@ -24,12 +24,10 @@ class RecipesController < ApplicationController
     @recipe.user_id = current_user.id
 
     if @recipe.save
-      flash[:notice]="You have created recipe successfully."
+      flash[:notice]="レシピが投稿されました"
       redirect_to recipe_path(@recipe)
     else
-      @user = current_user
-      @recipes = Recipe.all
-      render :index
+      render :new, status: :unprocessable_entity
     end
   end
 
