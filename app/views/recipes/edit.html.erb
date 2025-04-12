@@ -1,6 +1,17 @@
 <h2 class="mb-4">レシピ編集</h2>
 
 <div class="card p-4 shadow-sm">
+  <% if @recipe.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">入力内容に誤りがあります</h4>
+      <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
     <div class="mb-3">
       <%= f.label :title, 'タイトル', class: 'form-label' %>
@@ -36,4 +47,3 @@
     <%= link_to '戻る', recipe_path(@recipe), class: 'btn btn-outline-secondary' %>
   </div>
 </div>
-
