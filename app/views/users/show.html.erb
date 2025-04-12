@@ -30,15 +30,19 @@
             <strong>自己紹介:</strong> <%= @user.bio %>
           </div>
 
+          <% if current_user == @user %>
           <div class="mb-3">
             <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-secondary' %>
           </div>
+          <% end %>
 
           <h3>投稿レシピ一覧</h3>
 
+          <% if current_user == @user %>
           <div class="mb-3">
             <%= link_to 'レシピを投稿する', new_recipe_path, class: 'btn btn-primary' %>
           </div>
+          <% end %>
 
           <% if @recipes.any? %>
             <ul class="list-group">
