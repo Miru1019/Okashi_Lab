@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   def mypage
     @user = current_user
     @recipes = @user.recipes
