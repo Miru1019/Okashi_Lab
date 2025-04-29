@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class Public::RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def new
@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id]) 
     @recipe.destroy
-    redirect_to mypage_path, notice: 'レシピを削除しました'
+    redirect_to mypage_users_path, notice: 'レシピを削除しました'
   end
 
   private

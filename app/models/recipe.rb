@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   validates :instructions, presence: true
   
   has_one_attached :image  # 画像を追加
+  has_many :comments, dependent: :destroy
 
   # 画像を取得するメソッドを追加
   def get_recipe_image(width, height)
