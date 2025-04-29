@@ -1,0 +1,20 @@
+<!-- app/views/admin/users/show.html.erb -->
+<h1>ユーザー詳細</h1>
+
+<div class="card p-4">
+  <p><strong>ID:</strong>      <%= @user.id %></p>
+  <p><strong>名前:</strong>    <%= @user.name %></p>
+  <p><strong>メール:</strong>  <%= @user.email %></p>
+  <p><strong>登録日時:</strong> <%= @user.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+  
+  <div class="mt-4">
+    <%= link_to '退会させる',
+                admin_user_path(@user),
+                method: :delete,
+                data: { confirm: '本当にこのユーザーを退会させますか？' },
+                class: 'btn btn-danger' %>
+    <%= link_to 'ユーザー一覧に戻る',
+                admin_dashboards_path,
+                class: 'btn btn-secondary ms-2' %>
+  </div>
+</div>
