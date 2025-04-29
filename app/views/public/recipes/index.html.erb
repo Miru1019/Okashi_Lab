@@ -6,6 +6,7 @@
         <th scope="col">ユーザー</th>
         <th scope="col">タイトル</th>
         <th scope="col">紹介文</th>
+        <th scope="col">コメント数</th> <!-- コメント数のカラムを追加 -->
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
             <% end %>
           </td>
           <td><%= truncate(recipe.body, length: 100) %></td>
+          <td><%= recipe.comments.count %> コメント</td> <!-- コメント数を表示 -->
         </tr>
       <% end %>
     </tbody>

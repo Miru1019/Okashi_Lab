@@ -1,19 +1,16 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+private
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
-    
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
-  end
+def admin_controller?
+  self.class.module_parent_name == 'Admin'
+end
 
-  def after_sign_in_path_for(resource)
-    mypage_path
-  end
+protected
 
-  def after_sign_out_path_for(resource_or_scope)
-    about_path
-  end
+def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+end
 end
